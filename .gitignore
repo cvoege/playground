@@ -9,3 +9,4 @@ eslint.out.json
 /test-dist/
 /old/
 npm-debug.log
+/dist/

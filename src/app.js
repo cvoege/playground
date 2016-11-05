@@ -8,12 +8,18 @@ import createStore from './createStore';
 
 const initialState = { count: 0 };
 
-const reducer = async (state = initialState, action) => {
+const reducer = async (state = initialState, action = {}) => {
   switch (action.type) {
     case 'INCREMENT': 
       return { ...state, count: state.count + 1 };
     case 'DECREMENT':
       return { ...state, count: state.count - 1 };
+    case 'DELAY_INCREMENT':
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({ ...state, count: state.count + 1 });
+        }, 1000);
+      });
     default:
       return state;
   }
@@ -21,19 +27,35 @@ const reducer = async (state = initialState, action) => {
 
 const store = createStore(reducer);
 
-console.log(store);
-
-async function k() {
-  return 'hello';
-}
-
-console.log(k());
-
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = reducer();
+    store.subscribe(() => this.setState(store.getState()));
+    this.increment = this.increment.bind(this);
+    this.decrement = this.decrement.bind(this);
+    this.delayIncrement = this.delayIncrement.bind(this);
+  }
+
+  increment() {
+    store.dispatch({ type: 'INCREMENT' });
+  }
+
+  decrement() {
+    store.dispatch({ type: 'DECREMENT' });
+  }
+
+  delayIncrement() {
+    store.dispatch({ type: 'DELAY_INCREMENT' });
+  }
+
   render() {
     return (
       <div className="app">
-        Hello
+        <p>{ this.state.count }</p>
+        <button onClick={ this.increment }>+</button>
+        <button onClick={ this.decrement }>-</button>
+        <button onClick={ this.delayIncrement }>Delay +</button>
       </div>
     );
   }
