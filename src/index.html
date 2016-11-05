@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Mimir Playground</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <link rel="stylesheet" type="text/css" href="<%= appCssName %>">
+
+    <meta name="mobile-web-app-capable" content="yes">
+  </head>
+  <body>
+    <div id="load-bar"><div class="progress"></div></div>
+    <div id="mimir"></div>
+    <script src="<%= libsName %>"></script>
+    <script>window.Promise = window.Promise || ES6Promise.Promise</script>
+    <script src="<%= commonJsName %>"></script>
+    <script src="<%= appJsName %>"></script>
+  </body>
+</html>

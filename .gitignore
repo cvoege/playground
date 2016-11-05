@@ -1,0 +1,11 @@
+/node_modules/
+/bower_components/
+/lms-dist/
+/recruiting-dist/
+/production/
+/lms-production/
+/recruiting-production/
+eslint.out.json
+/test-dist/
+/old/
+npm-debug.log

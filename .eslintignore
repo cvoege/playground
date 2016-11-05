@@ -1,0 +1,10 @@
+src/public
+src/declarations
+src/libs
+node_modules
+lms-production
+recruiting-production
+lms-dist
+recruiting-dist
+old
+misc
